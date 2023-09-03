@@ -1,4 +1,6 @@
 const model = require("../model/url_model")
+
+// This function will insert new shorten url in the database
 const createNewShortUrl = async (req, res) => {
 
     if (!req.body.url) {
@@ -14,6 +16,8 @@ const createNewShortUrl = async (req, res) => {
     }
 
 }
+
+// This function will redirect the user to that url
 const giveShortUrl = async(req,res) =>{
     let shorturl = await model.findOne({_id : req.params.shortid})
     res.send(`https://${shorturl.originalurl}`)
